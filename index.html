@@ -1,86 +1,151 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
   <title>ฟอร์มกรอกข้อมูลร้านรีไซเคิล</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: auto; }
-    label { display: block; margin-top: 10px; font-weight: bold; }
-    input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; }
-    button { margin-top: 20px; padding: 10px 20px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      input, select, textarea {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h2>ฟอร์มกรอกข้อมูลร้านรีไซเคิล</h2>
+  <div class="container">
+    <h2>ฟอร์มกรอกข้อมูลร้านรีไซเคิล</h2>
+    <form id="junkShopForm">
+      <!-- ฟิลด์ต่าง ๆ ตามที่คุณต้องการ -->
+      <label>ชื่อร้าน</label>
+      <input type="text" name="shopName" required>
 
-  <form id="junkShopForm">
-    <label>ชื่อร้าน</label>
-    <input type="text" name="shopName" required>
+      <label>ชื่อเจ้าของ/ผู้จัดการ</label>
+      <input type="text" name="ownerName">
 
-    <label>ชื่อเจ้าของ/ผู้จัดการ</label>
-    <input type="text" name="ownerName">
+      <label>เบอร์โทร / LINE / Facebook</label>
+      <input type="text" name="contactInfo">
 
-    <label>เบอร์โทร / LINE / Facebook</label>
-    <input type="text" name="contactInfo">
+      <label>ที่อยู่</label>
+      <textarea name="address"></textarea>
 
-    <label>ที่อยู่</label>
-    <textarea name="address"></textarea>
+      <label>ตำบล / อำเภอ / จังหวัด</label>
+      <input type="text" name="subDistrict">
+      <input type="text" name="district">
+      <input type="text" name="province">
 
-    <label>ตำบล / อำเภอ / จังหวัด</label>
-    <input type="text" name="subDistrict">
-    <input type="text" name="district">
-    <input type="text" name="province">
+      <label>พิกัด GPS</label>
+      <input type="text" name="gpsLat" placeholder="Latitude">
+      <input type="text" name="gpsLng" placeholder="Longitude">
 
-    <label>พิกัด GPS</label>
-    <input type="text" name="gpsLat" placeholder="Latitude">
-    <input type="text" name="gpsLng" placeholder="Longitude">
+      <label>จำนวนปีที่เปิดดำเนินการ</label>
+      <input type="number" name="years">
 
-    <label>จำนวนปีที่เปิดดำเนินการ</label>
-    <input type="number" name="years">
+      <label>จำนวนพนักงาน</label>
+      <input type="number" name="employees">
 
-    <label>จำนวนพนักงาน</label>
-    <input type="number" name="employees">
+      <label>สถานะการจดทะเบียน</label>
+      <select name="registrationStatus">
+        <option value="formal">จดทะเบียน</option>
+        <option value="informal">ไม่จดทะเบียน</option>
+      </select>
 
-    <label>สถานะการจดทะเบียน</label>
-    <select name="registrationStatus">
-      <option value="formal">จดทะเบียน</option>
-      <option value="informal">ไม่จดทะเบียน</option>
-    </select>
+      <label>อุปกรณ์ที่มี</label>
+      <textarea name="equipment" placeholder="เช่น เครื่องบดแก้ว, เครื่องอัดแนวตั้ง ฯลฯ"></textarea>
 
-    <label>อุปกรณ์ที่มี</label>
-    <textarea name="equipment" placeholder="เช่น เครื่องบดแก้ว, เครื่องอัดแนวตั้ง ฯลฯ"></textarea>
+      <label>ความจุในการจัดเก็บ (ประมาณ)</label>
+      <input type="text" name="storageCapacity">
 
-    <label>ความจุในการจัดเก็บ (ประมาณ)</label>
-    <input type="text" name="storageCapacity">
+      <label>วิธีการขนส่ง</label>
+      <input type="text" name="transportMethod">
 
-    <label>วิธีการขนส่ง</label>
-    <input type="text" name="transportMethod">
+      <label>ความสามารถในการคัดแยก</label>
+      <select name="sortingCapability">
+        <option value="manual">คัดแยกด้วยมือ</option>
+        <option value="machine">เครื่องช่วยคัดแยก</option>
+        <option value="none">ไม่มี</option>
+      </select>
 
-    <label>ความสามารถในการคัดแยก</label>
-    <select name="sortingCapability">
-      <option value="manual">คัดแยกด้วยมือ</option>
-      <option value="machine">เครื่องช่วยคัดแยก</option>
-      <option value="none">ไม่มี</option>
-    </select>
+      <label>ประเภทวัสดุที่ขาย</label>
+      <textarea name="materialsSold" placeholder="ขวด, PET, กระดาษ, อลูมิเนียม ฯลฯ"></textarea>
 
-    <label>ประเภทวัสดุที่ขาย</label>
-    <textarea name="materialsSold" placeholder="ขวด, PET, กระดาษ, อลูมิเนียม ฯลฯ"></textarea>
+      <label>ปริมาณต่อเดือน (ต่อประเภท)</label>
+      <textarea name="monthlyVolume"></textarea>
 
-    <label>ปริมาณต่อเดือน (ต่อประเภท)</label>
-    <textarea name="monthlyVolume"></textarea>
+      <label>ความถี่ในการทำธุรกรรม</label>
+      <input type="text" name="transactionFrequency">
 
-    <label>ความถี่ในการทำธุรกรรม</label>
-    <input type="text" name="transactionFrequency">
+      <label>มูลค่าธุรกรรมเฉลี่ย</label>
+      <input type="text" name="averageValue">
 
-    <label>มูลค่าธุรกรรมเฉลี่ย</label>
-    <input type="text" name="averageValue">
+      <label>ลูกค้ารายอื่นที่ขายให้</label>
+      <textarea name="otherBuyers"></textarea>
 
-    <label>ลูกค้ารายอื่นที่ขายให้</label>
-    <textarea name="otherBuyers"></textarea>
-
-    <button type="submit">บันทึกข้อมูล</button>
-  </form>
+      <button type="submit">บันทึกข้อมูล</button>
+    </form>
+  </div>
 
   <script>
     document.getElementById('junkShopForm').addEventListener('submit', function(e) {
